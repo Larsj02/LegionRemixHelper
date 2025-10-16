@@ -36,6 +36,12 @@ function questUtils:Init()
     addon:RegisterEvent("QUEST_PROGRESS", "QuestUtils_QuestProgress", function()
         self:OnQuestProgress()
     end)
+
+    addon:RegisterEvent("UPDATE_UI_WIDGET", "QuestUtils_HeroicWorldTier", function(_, _, widgetInfo)
+        if widgetInfo then
+            self:OnWorldTierIcon()
+        end
+    end)
 end
 
 function questUtils:CreateSettings()
@@ -57,9 +63,12 @@ function questUtils:CreateSettings()
     settingsUtils:CreateCheckbox(settingsCategory, "AUTO_QUEST_SURPRESS_SHIFT", "BOOLEAN", self.L["QuestUtils.SuppressShift"],
         self.L["QuestUtils.SuppressShiftTooltip"], true,
         settingsUtils:GetDBFunc("GETTERSETTER", "quest.suppressShift"))
+    settingsUtils:CreateCheckbox(settingsCategory, "AUTO_QUEST_HIDE_WORLD_TIER_ICON", "BOOLEAN", self.L["QuestUtils.SupressWorldTierIcon"],
+        self.L["QuestUtils.SupressWorldTierIconTooltip"], false,
+        settingsUtils:GetDBFunc("GETTERSETTER", "quest.suppressWorldTierIcon"))
 end
 
----@param functionType "autoAccept" | "autoTurnIn" | "ignoreEternus" | "suppressShift"
+---@param functionType "autoAccept" | "autoTurnIn" | "ignoreEternus" | "suppressShift" | "suppressWorldTierIcon"
 ---@return boolean isActive
 function questUtils:IsActive(functionType)
     return self.addon:GetDatabaseValue("quest." .. functionType)
@@ -162,4 +171,41 @@ function questUtils:OnQuestProgress()
     if self:IsActive("autoTurnIn") and IsQuestCompletable() then
         CompleteQuest()
     end
+end
+
+function questUtils:ShouldSuppressWorldTierIcon()
+    local suppressWorldTierIcon = self:IsActive("suppressWorldTierIcon")
+    if suppressWorldTierIcon then
+        return true
+    end
+
+    return false
+end
+
+function questUtils:UpdateWorldTierIcon()
+
+    local container = UIWidgetBelowMinimapContainerFrame
+    if not container or not container.GetLayoutChildren then return end
+
+    local shouldSupress = self:ShouldSuppressWorldTierIcon()
+    local widgetFrames = container.widgetFrames
+    local widgetId = const.HEROIC_WORLD_TIER.WIDGET_ID
+
+    if not widgetFrames or type(widgetFrames) ~= "table" or not widgetFrames[widgetId] then return end
+
+    local worldTierWidget = widgetFrames[widgetId]
+    if worldTierWidget.widgetID and worldTierWidget.widgetID == widgetId then
+        if shouldSupress ~= not worldTierWidget:IsShown() then
+            worldTierWidget:SetShown(not shouldSupress)
+            if container.UpdateWidgetLayout then
+                container:UpdateWidgetLayout()
+            end
+        end
+
+        return
+    end
+end
+
+function questUtils:OnWorldTierIcon()
+    self:UpdateWorldTierIcon()
 end

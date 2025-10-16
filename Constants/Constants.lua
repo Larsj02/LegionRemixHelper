@@ -178,6 +178,10 @@ constants.RESEARCH_TASKS = {
     CALLBACK_CATEGORY = "ResearchTaskUpdate",
 }
 
+constants.HEROIC_WORLD_TIER = {
+    WIDGET_ID = 7190,
+}
+
 constants.REMIX_HUB_MAP_ID = 619
 
 constants.NPC = {

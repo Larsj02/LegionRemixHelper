@@ -137,6 +137,8 @@ Example: /LRH s]],
     ["QuestUtils.IgnoreEternusTooltip"] = "Ignore quests that come from Eternus.",
     ["QuestUtils.SuppressShift"] = "Suppress with Shift",
     ["QuestUtils.SuppressShiftTooltip"] = "Hold Shift to suppress automatic quest acceptance/turn-in.",
+    ["QuestUtils.SuppressWorldTierIcon"] = "Suppress World Tier Icon",
+    ["QuestUtils.SuppressWorldTierIconTooltip"] = "Hide the World Tier icon that is below the minimap.",
 
     -- Utils/QuickActionBarUtils.lua
     ["QuickActionBarUtils.SettingsCategoryPrefix"] = "Quick Action Bar",

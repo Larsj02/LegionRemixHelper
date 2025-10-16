@@ -24,6 +24,7 @@ local defaultDatabase = {
         autoTurnIn = false,
         suppressShift = false,
         ignoreEternus = true,
+        suppressWorldTierIcon = false,
     },
     toast = {
         activate = false,
