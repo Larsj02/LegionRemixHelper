@@ -193,10 +193,10 @@ function questUtils:UpdateWorldTierIcon()
 
     if not widgetFrames or type(widgetFrames) ~= "table" or not widgetFrames[widgetId] then return end
 
-    local worldTierWIdget = widgetFrames[widgetId]
-    if worldTierWIdget.widgetID and worldTierWIdget.widgetID == widgetId then
-        if shouldSupress ~= not worldTierWIdget:IsShown() then
-            worldTierWIdget:SetShown(not shouldSupress)
+    local worldTierWidget = widgetFrames[widgetId]
+    if worldTierWidget.widgetID and worldTierWidget.widgetID == widgetId then
+        if shouldSupress ~= not worldTierWidget:IsShown() then
+            worldTierWidget:SetShown(not shouldSupress)
             if container.UpdateWidgetLayout then
                 container:UpdateWidgetLayout()
             end
