@@ -138,6 +138,8 @@ Exemple: /LRH s]],
     ["QuestUtils.IgnoreEternusTooltip"] = "Ignorer les quêtes qui viennent d’Éternia.",
     ["QuestUtils.SuppressShift"] = "Supprimer avec Maj",
     ["QuestUtils.SuppressShiftTooltip"] = "Maintenir la touche Maj pour supprimer l’acceptation / le rendu automatique de la quête.",
+    ["QuestUtils.SuppressWorldTierIcon"] = "Supprimer l'icône de niveau mondial",
+    ["QuestUtils.SuppressWorldTierIconTooltip"] = "Masquer l'icône de niveau mondial qui se trouve sous la mini-carte.",
 
     -- Utils/QuickActionBarUtils.lua
     ["QuickActionBarUtils.SettingsCategoryPrefix"] = "Quick Action Bar",

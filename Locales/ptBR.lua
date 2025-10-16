@@ -137,6 +137,8 @@ Exemplos: /LRH s]],
     ["QuestUtils.IgnoreEternusTooltip"] = "Ignore missões que vêm de Eternus.",
     ["QuestUtils.SuppressShift"] = "Suprimir com Shift",
     ["QuestUtils.SuppressShiftTooltip"] = "Segure Shift para suprimir a aceitação/entrega automática de missões.",
+    ["QuestUtils.SuppressWorldTierIcon"] = "Suprimir o ícone de nível do mundo",
+    ["QuestUtils.SuppressWorldTierIconTooltip"] = "Ocultar o ícone de nível do mundo que está abaixo do minimapa.",
 
     -- Utils/QuickActionBarUtils.lua
     ["QuickActionBarUtils.SettingsCategoryPrefix"] = "Barra de Ações Rápidas",

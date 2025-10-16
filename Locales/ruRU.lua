@@ -138,6 +138,8 @@ local L = {
     ["QuestUtils.IgnoreEternusTooltip"] = "Игнорируйте задания, от Вечноса.",
     ["QuestUtils.SuppressShift"] = "С помощью Shift",
     ["QuestUtils.SuppressShiftTooltip"] = "Удерживайте клавишу Shift, чтобы отменить автоматическое принятие/сдачу заданий.",
+    ["QuestUtils.SuppressWorldTierIcon"] = "Скрыть иконку уровня мира",
+    ["QuestUtils.SuppressWorldTierIconTooltip"] = "Скрыть иконку уровня мира, которая находится под мини-картой.",
 
     -- Utils/QuickActionBarUtils.lua
     ["QuickActionBarUtils.SettingsCategoryPrefix"] = "Быстрая панель действий",

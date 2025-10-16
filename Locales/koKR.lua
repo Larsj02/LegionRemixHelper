@@ -137,6 +137,8 @@ local L = {
     ["QuestUtils.IgnoreEternusTooltip"] = "이터누스로부터 오는 퀘스트를 무시합니다.",
     ["QuestUtils.SuppressShift"] = "Shift로 비활성화",
     ["QuestUtils.SuppressShiftTooltip"] = "Shift를 누르고 있으면 자동 퀘스트 수락/완료를 비활성화합니다.",
+    ["QuestUtils.SuppressWorldTierIcon"] = "세계 티어 아이콘 숨기기",
+    ["QuestUtils.SuppressWorldTierIconTooltip"] = "미니맵 아래에 있는 세계 티어 아이콘을 숨깁니다.",
 
     -- Utils/QuickActionBarUtils.lua
     ["QuickActionBarUtils.SettingsCategoryPrefix"] = "빠른 실행바",

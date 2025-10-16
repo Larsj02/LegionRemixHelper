@@ -137,6 +137,8 @@ Beispiel: /LRH s]],
     ["QuestUtils.IgnoreEternusTooltip"] = "Quests ignorieren, die von Eternus kommen.",
     ["QuestUtils.SuppressShift"] = "Mit Shift unterdrücken",
     ["QuestUtils.SuppressShiftTooltip"] = "Shift gedrückt halten, um das automatische Annehmen/Abgeben von Quests zu unterdrücken.",
+    ["QuestUtils.SuppressWorldTierIcon"] = "Weltstufen-Icon unterdrücken",
+    ["QuestUtils.SuppressWorldTierIconTooltip"] = "Das Weltstufen-Icon, das sich unter der Minikarte befindet, ausblenden.",
 
     -- Utils/QuickActionBarUtils.lua
     ["QuickActionBarUtils.SettingsCategoryPrefix"] = "Schnellleiste",

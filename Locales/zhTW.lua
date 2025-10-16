@@ -8,7 +8,7 @@ local L = {
     ["Components.Dropdown.SelectOption"] = "選擇一個選項",
 
     -- UI/Tabs/ArtifactTraitsTabUI.lua
-    ["Tabs.ArtifactTraitsTabUI.AutoActivateForSpec"] = "Auto-Activate for Spec",
+    ["Tabs.ArtifactTraitsTabUI.AutoActivateForSpec"] = "自動為專精啟用",
     ["Tabs.ArtifactTraitsTabUI.NoArtifactEquipped"] = "未裝備神兵武器",
 
     -- UI/Tabs/CollectionTabUI.lua
@@ -22,8 +22,8 @@ local L = {
     ["Tabs.CollectionTabUI.FilterSources"] = "來源",
     ["Tabs.CollectionTabUI.FilterCheckAll"] = "全選",
     ["Tabs.CollectionTabUI.FilterUncheckAll"] = "全不選",
-    ["Tabs.CollectionTabUI.FilterRaidVariants"] = "Show Raid Variants",
-    ["Tabs.CollectionTabUI.FilterUnique"] = "Only Remix-Specific Items",
+    ["Tabs.CollectionTabUI.FilterRaidVariants"] = "顯示團隊副本的配色",
+    ["Tabs.CollectionTabUI.FilterUnique"] = "僅限混音專屬物品",
     ["Tabs.CollectionTabUI.Type"] = "類型",
     ["Tabs.CollectionTabUI.Source"] = "來源",
     ["Tabs.CollectionTabUI.SearchInstructions"] = "搜尋",
@@ -63,15 +63,15 @@ local L = {
     ["ScrappingUI.MinItemLevelDifference"] = "最低物品等級差",
     ["ScrappingUI.MinItemLevelDifferenceInstructions"] = "比已裝備物品低 x 級",
     ["ScrappingUI.AutoScrap"] = "自動拆解",
-    ["ScrappingUI.ScraperListTabTitle"] = "Scrapper List",
-    ["ScrappingUI.AdvancedSettingsTabTitle"] = "More Settings",
-    ["ScrappingUI.JewelryTraitsToKeep"] = "Jewelry Traits to Keep",
-    ["ScrappingUI.AdvancedJewelryFilter"] = "Advanced Jewelry Filter",
-    ["ScrappingUI.FilterCheckAll"] = "Check All",
-    ["ScrappingUI.FilterUncheckAll"] = "Uncheck All",
-    ["ScrappingUI.Neck"] = "Neck traits",
-    ["ScrappingUI.Trinket"] = "Trinket traits",
-    ["ScrappingUI.Finger"] = "Ring traits",
+    ["ScrappingUI.ScraperListTabTitle"] = "拆解列表",
+    ["ScrappingUI.AdvancedSettingsTabTitle"] = "更多設定",
+    ["ScrappingUI.JewelryTraitsToKeep"] = "需保留的飾品特質",
+    ["ScrappingUI.AdvancedJewelryFilter"] = "進階飾品過濾",
+    ["ScrappingUI.FilterCheckAll"] = "全選",
+    ["ScrappingUI.FilterUncheckAll"] = "全不選",
+    ["ScrappingUI.Neck"] = "項鍊特質",
+    ["ScrappingUI.Trinket"] = "飾品特質",
+    ["ScrappingUI.Finger"] = "戒指特質",
 
     -- Utils/ArtifactTraitUtils.lua
     ["ArtifactTraitUtils.NoItemEquipped"] = "未裝備物品。",
@@ -109,9 +109,9 @@ Example: /LRH s]],
     ["CommandUtils.SettingsCommandShort"] = "s",
 
     -- Utils/EditModeUtils.lua
-    ["EditModeUtils.ShowAddonSystems"] = "Legion-Remix-Helper-Systems",
-    ["EditModeUtils.SystemLabel.ToastUI"] = "Toasts",
-    ["EditModeUtils.SystemTooltip.ToastUI"] = "Move the position of the toasts.",
+    ["EditModeUtils.ShowAddonSystems"] = "軍團-重混-助手-系統",
+    ["EditModeUtils.SystemLabel.ToastUI"] = "提示",
+    ["EditModeUtils.SystemTooltip.ToastUI"] = "移動提示的位置。",
 
     -- Utils/ItemOpenerUtils.lua
     ["ItemOpenerUtils.SettingsCategoryPrefix"] = "自動開啟物品",
@@ -121,10 +121,10 @@ Example: /LRH s]],
     ["ItemOpenerUtils.AutoOpenItemEntryTooltip"] = "在背包中發現 %s 時自動開啟。",
 
     -- Utils/MerchantUtils.lua
-    ["MerchantUtils.SettingsCategoryPrefix"] = "Merchant Settings",
-    ["MerchantUtils.SettingsCategoryTooltip"] = "Settings for the Merchant feature",
-    ["MerchantUtils.HideCollectedMerchantItems"] = "Hide Collected Merchant Items",
-    ["MerchantUtils.HideCollectedMerchantItemsTooltip"] = "Hides items in the merchant window that you already have in your collection.",
+    ["MerchantUtils.SettingsCategoryPrefix"] = "商人設定",
+    ["MerchantUtils.SettingsCategoryTooltip"] = "商人功能的設定",
+    ["MerchantUtils.HideCollectedMerchantItems"] = "隱藏已收藏的商人物品",
+    ["MerchantUtils.HideCollectedMerchantItemsTooltip"] = "在商人視窗中隱藏你已收藏的物品。",
 
     -- Utils/QuestUtils.lua
     ["QuestUtils.SettingsCategoryPrefix"] = "自動任務",
@@ -133,10 +133,12 @@ Example: /LRH s]],
     ["QuestUtils.AutoTurnInTooltip"] = "與 NPC 互動時自動交任務。",
     ["QuestUtils.AutoAccept"] = "自動接任務",
     ["QuestUtils.AutoAcceptTooltip"] = "與 NPC 互動時自動接任務。",
-    ["QuestUtils.IgnoreEternus"] = "Ignore Eternus",
-    ["QuestUtils.IgnoreEternusTooltip"] = "Ignore quests that come from Eternus.",
-    ["QuestUtils.SuppressShift"] = "Suppress with Shift",
-    ["QuestUtils.SuppressShiftTooltip"] = "Hold Shift to suppress automatic quest acceptance/turn-in.",
+    ["QuestUtils.IgnoreEternus"] = "忽略伊特努絲",
+    ["QuestUtils.IgnoreEternusTooltip"] = "忽略來自伊特努絲的任務。",
+    ["QuestUtils.SuppressShift"] = "按住 Shift 鍵暫時禁用",
+    ["QuestUtils.SuppressShiftTooltip"] = "按住 Shift 鍵可暫時禁用自動接/交任務。",
+    ["QuestUtils.SuppressWorldTierIcon"] = "隱藏世界等級圖標",
+    ["QuestUtils.SuppressWorldTierIconTooltip"] = "隱藏位於小地圖下方的世界等級圖標。",
 
     -- Utils/QuickActionBarUtils.lua
     ["QuickActionBarUtils.SettingsCategoryPrefix"] = "快捷欄",
