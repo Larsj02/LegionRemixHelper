@@ -1,5 +1,5 @@
 ## Interface: 110205
-## Version: 1.6.1
+## Version: 1.6.2
 ## Title: Legion Remix Helper
 ## Author: Rasu | Larsj_02
 ## DefaultState: enabled
