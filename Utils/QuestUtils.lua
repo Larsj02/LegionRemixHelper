@@ -64,7 +64,7 @@ function questUtils:CreateSettings()
         self.L["QuestUtils.SuppressShiftTooltip"], true,
         settingsUtils:GetDBFunc("GETTERSETTER", "quest.suppressShift"))
     settingsUtils:CreateCheckbox(settingsCategory, "AUTO_QUEST_HIDE_WORLD_TIER_ICON", "BOOLEAN", self.L["QuestUtils.SupressWorldTierIcon"],
-        self.L["QuestUtils.SupressWorldTierIconTooltip"], true,
+        self.L["QuestUtils.SupressWorldTierIconTooltip"], false,
         settingsUtils:GetDBFunc("GETTERSETTER", "quest.suppressWorldTierIcon"))
 end
 
