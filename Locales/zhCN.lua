@@ -138,7 +138,7 @@ local L = {
     ["QuestUtils.SuppressShift"] = "按住Shift键临时禁用",
     ["QuestUtils.SuppressShiftTooltip"] = "按住Shift键可临时禁用自动交/接任务功能。",
     ["QuestUtils.SuppressWorldTierIcon"] = "隐藏世界难度图标",
-    ["QuestUtils.SuppressWorldTierIconTooltip"] = "隐藏位于小地图下方的世界难度图标。",
+    ["QuestUtils.SuppressWorldTierIconTooltip"] = "隐藏小地图下方的世界难度图标。",
 
     -- Utils/QuickActionBarUtils.lua
     ["QuickActionBarUtils.SettingsCategoryPrefix"] = "快捷动作栏",
