@@ -73,6 +73,7 @@ local L = {
     ["ScrappingUI.Neck"] = "Traits des Colliers",
     ["ScrappingUI.Trinket"] = "Traits des Bijoux",
     ["ScrappingUI.Finger"] = "Traits des Anneaux",
+    ["ScrappingUI.IgnoreFromEquipmentSets"] = "Ignorer les objets dans les ensembles d'équipement",
 
     -- Utils/ArtifactTraitUtils.lua
     ["ArtifactTraitUtils.NoItemEquipped"] = "Aucun objet équipé.",
@@ -126,6 +127,8 @@ Exemple: /LRH s]],
     ["MerchantUtils.SettingsCategoryTooltip"] = "Paramètres de la fonctionnalité Marchand",
     ["MerchantUtils.HideCollectedMerchantItems"] = "Masquer les objets Marchands collectés",
     ["MerchantUtils.HideCollectedMerchantItemsTooltip"] = "Masquer les objets dans la fenêtre du Marchand que vous avez déjà dans votre collection.",
+    ["MerchantUtils.HideCollectedPetsAtLimit"] = "Masquer les animaux de compagnie collectés à la limite",
+    ["MerchantUtils.HideCollectedPetsAtLimitTooltip"] = "Masquer les animaux de compagnie dans la fenêtre du Marchand uniquement lorsque vous avez atteint la limite de collection pour les animaux de compagnie.",
 
     -- Utils/QuestUtils.lua
     ["QuestUtils.SettingsCategoryPrefix"] = "Quête-Auto",

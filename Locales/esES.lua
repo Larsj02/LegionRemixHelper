@@ -72,6 +72,7 @@ local L = {
     ["ScrappingUI.Neck"] = "Rasgos del collar",
     ["ScrappingUI.Trinket"] = "Rasgos de los abalorios",
     ["ScrappingUI.Finger"] = "Rasgos de los anillos",
+    ["ScrappingUI.IgnoreFromEquipmentSets"] = "Ignorar items en conjuntos de equipo",
 
     -- Utils/ArtifactTraitUtils.lua
     ["ArtifactTraitUtils.NoItemEquipped"] = "No hay ningún objeto equipado.",
@@ -125,6 +126,8 @@ Ejemplo: /LRH s]],
     ["MerchantUtils.SettingsCategoryTooltip"] = "Configuración de la función Vendedor",
     ["MerchantUtils.HideCollectedMerchantItems"] = "Ocultar los items del vendedor conocidos",
     ["MerchantUtils.HideCollectedMerchantItemsTooltip"] = "Oculta los items de la ventana del vendedor que ya tienes en tu colección.",
+    ["MerchantUtils.HideCollectedPetsAtLimit"] = "Ocultar mascotas recolectadas al límite",
+    ["MerchantUtils.HideCollectedPetsAtLimitTooltip"] = "Oculta las mascotas en la ventana del vendedor solo cuando hayas alcanzado el límite de colección para mascotas.",
 
     -- Utils/QuestUtils.lua
     ["QuestUtils.SettingsCategoryPrefix"] = "Misión automática",

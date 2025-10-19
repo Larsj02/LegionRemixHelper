@@ -72,6 +72,7 @@ local L = {
     ["ScrappingUI.Neck"] = "Neck traits",
     ["ScrappingUI.Trinket"] = "Trinket traits",
     ["ScrappingUI.Finger"] = "Ring traits",
+    ["ScrappingUI.IgnoreFromEquipmentSets"] = "Ignore Items in Equipment Sets",
 
     -- Utils/ArtifactTraitUtils.lua
     ["ArtifactTraitUtils.NoItemEquipped"] = "No Item Equipped.",
@@ -125,6 +126,8 @@ Example: /LRH s]],
     ["MerchantUtils.SettingsCategoryTooltip"] = "Settings for the Merchant feature",
     ["MerchantUtils.HideCollectedMerchantItems"] = "Hide Collected Merchant Items",
     ["MerchantUtils.HideCollectedMerchantItemsTooltip"] = "Hides items in the merchant window that you already have in your collection.",
+    ["MerchantUtils.HideCollectedPetsAtLimit"] = "Hide Collected Pets at Limit",
+    ["MerchantUtils.HideCollectedPetsAtLimitTooltip"] = "Hide pets in the merchant window only when you have reached the collection limit for pets.",
 
     -- Utils/QuestUtils.lua
     ["QuestUtils.SettingsCategoryPrefix"] = "Auto-Quest",

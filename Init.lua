@@ -8,6 +8,7 @@ local defaultDatabase = {
         minLevelDiff = 0,
         autoScrap = false,
         advancedJeweleryFilter = false,
+        ignoreFromEquipmentSets = false,
     },
     collectionsTab = {
         selected = 1,
@@ -44,6 +45,7 @@ local defaultDatabase = {
     },
     merchant = {
         hideCollectedItems = false,
+        hideCollectedPetsAtLimit = true, -- we set this to true as it was default behavior before adding the setting
     },
     editMode = {
         ToastUI = {

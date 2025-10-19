@@ -72,6 +72,7 @@ local L = {
     ["ScrappingUI.Neck"] = "项链及特质",
     ["ScrappingUI.Trinket"] = "饰品及特质",
     ["ScrappingUI.Finger"] = "戒指及特质",
+    ["ScrappingUI.IgnoreFromEquipmentSets"] = "忽略装备套装中的物品",
 
     -- Utils/ArtifactTraitUtils.lua
     ["ArtifactTraitUtils.NoItemEquipped"] = "未装备物品。",
@@ -125,6 +126,8 @@ local L = {
     ["MerchantUtils.SettingsCategoryTooltip"] = "商人功能的设置",
     ["MerchantUtils.HideCollectedMerchantItems"] = "隐藏已收藏的物品",
     ["MerchantUtils.HideCollectedMerchantItemsTooltip"] = "在商人窗口中隐藏你已收藏的物品。",
+    ["MerchantUtils.HideCollectedPetsAtLimit"] = "达到上限时隐藏已收集的宠物",
+    ["MerchantUtils.HideCollectedPetsAtLimitTooltip"] = "仅在达到宠物收集上限时隐藏商人窗口中的宠物。",
 
     -- Utils/QuestUtils.lua
     ["QuestUtils.SettingsCategoryPrefix"] = "自动任务",

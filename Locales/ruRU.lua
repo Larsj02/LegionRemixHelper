@@ -73,6 +73,7 @@ local L = {
     ["ScrappingUI.Neck"] = "Черты ожерелья",
     ["ScrappingUI.Trinket"] = "Черты аксессуара",
     ["ScrappingUI.Finger"] = "Черты кольца",
+    ["ScrappingUI.IgnoreFromEquipmentSets"] = "Игнорировать предметы в комплектах снаряжения",
 
     -- Utils/ArtifactTraitUtils.lua
     ["ArtifactTraitUtils.NoItemEquipped"] = "Предмет не экипирован.",
@@ -126,6 +127,8 @@ local L = {
     ["MerchantUtils.SettingsCategoryTooltip"] = "Настройки функции Торговец",
     ["MerchantUtils.HideCollectedMerchantItems"] = "Скрыть собранные предметы торговца",
     ["MerchantUtils.HideCollectedMerchantItemsTooltip"] = "Скрывает предметы в окне торговца, которые уже есть в вашей коллекции.",
+    ["MerchantUtils.HideCollectedPetsAtLimit"] = "Скрыть собранных питомцев при достижении лимита",
+    ["MerchantUtils.HideCollectedPetsAtLimitTooltip"] = "Скрыть питомцев в окне торговца только при достижении лимита коллекции для питомцев.",
 
     -- Utils/QuestUtils.lua
     ["QuestUtils.SettingsCategoryPrefix"] = "Автозадание",
