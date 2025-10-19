@@ -598,12 +598,11 @@ end
 
 function artifactTraitUtils:CreateSettings()
     local settingsUtils = Private.SettingsUtils
-    local settingsCategory = settingsUtils:GetCategory()
     local settingsPrefix = self.L["ArtifactTraitUtils.SettingsCategoryPrefix"]
 
-    settingsUtils:CreateHeader(settingsCategory, settingsPrefix, self.L["ArtifactTraitUtils.SettingsCategoryTooltip"],
+    settingsUtils:CreateHeader(settingsPrefix, self.L["ArtifactTraitUtils.SettingsCategoryTooltip"],
         { settingsPrefix })
-    settingsUtils:CreateCheckbox(settingsCategory, "AUTO_ARTIFACT_BUY", "BOOLEAN", self.L["ArtifactTraitUtils.AutoBuy"],
+    settingsUtils:CreateCheckbox("AUTO_ARTIFACT_BUY", "BOOLEAN", self.L["ArtifactTraitUtils.AutoBuy"],
         self.L["ArtifactTraitUtils.AutoBuyTooltip"], true,
         settingsUtils:GetDBFunc("GETTERSETTER", "artifactTraits.autoBuy"))
 end

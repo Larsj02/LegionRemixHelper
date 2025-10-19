@@ -212,18 +212,17 @@ end
 
 function tooltipUtils:CreateSettings()
     local settingsUtils = Private.SettingsUtils
-    local settingsCategory = settingsUtils:GetCategory()
     local settingsPrefix = self.L["TooltipUtils.SettingsCategoryPrefix"]
 
-    settingsUtils:CreateHeader(settingsCategory, settingsPrefix, self.L["TooltipUtils.SettingsCategoryTooltip"],
+    settingsUtils:CreateHeader(settingsPrefix, self.L["TooltipUtils.SettingsCategoryTooltip"],
         { settingsPrefix })
-    settingsUtils:CreateCheckbox(settingsCategory, "TOOLTIP_POWER_ACTIVATE", "BOOLEAN", self.L["TooltipUtils.Activate"],
+    settingsUtils:CreateCheckbox("TOOLTIP_POWER_ACTIVATE", "BOOLEAN", self.L["TooltipUtils.Activate"],
         self.L["TooltipUtils.ActivateTooltip"], false,
         settingsUtils:GetDBFunc("GETTERSETTER", "tooltip.activate"))
-    settingsUtils:CreateCheckbox(settingsCategory, "TOOLTIP_POWER_THREADS", "BOOLEAN", self.L["TooltipUtils.ThreadsInfo"],
+    settingsUtils:CreateCheckbox("TOOLTIP_POWER_THREADS", "BOOLEAN", self.L["TooltipUtils.ThreadsInfo"],
         self.L["TooltipUtils.ThreadsInfoTooltip"], false,
         settingsUtils:GetDBFunc("GETTERSETTER", "tooltip.threads"))
-    settingsUtils:CreateCheckbox(settingsCategory, "TOOLTIP_POWER_POWER", "BOOLEAN", self.L["TooltipUtils.PowerInfo"],
+    settingsUtils:CreateCheckbox("TOOLTIP_POWER_POWER", "BOOLEAN", self.L["TooltipUtils.PowerInfo"],
         self.L["TooltipUtils.PowerInfoTooltip"], false,
         settingsUtils:GetDBFunc("GETTERSETTER", "tooltip.power"))
 end
