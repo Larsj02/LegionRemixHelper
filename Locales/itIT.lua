@@ -72,6 +72,7 @@ local L = {
     ["ScrappingUI.Neck"] = "Tratti collana",
     ["ScrappingUI.Trinket"] = "Tratti monile",
     ["ScrappingUI.Finger"] = "Tratti anello",
+    ["ScrappingUI.IgnoreFromEquipmentSets"] = "Ignora gli oggetti negli insiemi di equipaggiamento",
 
     -- Utils/ArtifactTraitUtils.lua
     ["ArtifactTraitUtils.NoItemEquipped"] = "Nessun oggetto equipaggiato.",

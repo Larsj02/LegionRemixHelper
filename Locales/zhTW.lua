@@ -72,6 +72,7 @@ local L = {
     ["ScrappingUI.Neck"] = "項鍊特質",
     ["ScrappingUI.Trinket"] = "飾品特質",
     ["ScrappingUI.Finger"] = "戒指特質",
+    ["ScrappingUI.IgnoreFromEquipmentSets"] = "忽略裝備套裝中的物品",
 
     -- Utils/ArtifactTraitUtils.lua
     ["ArtifactTraitUtils.NoItemEquipped"] = "未裝備物品。",

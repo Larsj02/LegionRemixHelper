@@ -152,33 +152,47 @@ function scrappingUtils:GetHighestItemFromListByID(itemList, itemID)
     return highestItem, highestGeneral
 end
 
+---@param itemLoc ItemLocationMixin
+---@return boolean isInEquipmentSet
+function scrappingUtils:IsItemInEquipmentSet(itemLoc)
+    local containerIndex, slotIndex = itemLoc:GetBagAndSlot()
+    if not containerIndex or not slotIndex then
+        return false
+    end
+    local inSet = C_Container.GetContainerItemEquipmentSetInfo(containerIndex, slotIndex)
+    return inSet == true
+end
+
 ---@param capReturn number|nil
 ---@return ScrappableItem[]
 function scrappingUtils:GetFilteredScrappableItems(capReturn)
+    local shouldIgnoreFromEquipmentSets = self:GetIgnoreFromEquipmentSets()
     local minLevelDiff = self:GetMinimumLevelDifference() or 0
     local maxQuality = self:GetMaxScrappingQuality() or Enum.ItemQuality.Rare
 
     local scrappableItems = self:GetScrappableItems()
     local filteredItems = {}
     for _, item in ipairs(scrappableItems) do
-        local jewelryType = const.SCRAPPING_MACHINE.JEWELRY.INV_TYPES[item.invType]
-        local itemID = C_Item.GetItemID(item.location)
-        local highestItem, highestGeneral = self:GetHighestItemFromListByID(scrappableItems, itemID)
-        local equippedItemLevel = Private.ItemUtils:GetMinLevelForInvType(item.invType)
-        if item.quality <= maxQuality and equippedItemLevel and equippedItemLevel - item.level >= minLevelDiff then
-            if self:GetAdvancedJeweleryFilter() and jewelryType then
-                local shouldKeep = self:GetTraitToKeepForSlot(jewelryType, itemID)
-                if not shouldKeep and highestGeneral ~= item then
-                    tinsert(filteredItems, item)
-                elseif shouldKeep and highestItem ~= item then
+        if not (shouldIgnoreFromEquipmentSets and self:IsItemInEquipmentSet(item.location)) then
+            local jewelryType = const.SCRAPPING_MACHINE.JEWELRY.INV_TYPES[item.invType]
+            local itemID = C_Item.GetItemID(item.location)
+            local highestItem, highestGeneral = self:GetHighestItemFromListByID(scrappableItems, itemID)
+            local equippedItemLevel = Private.ItemUtils:GetMinLevelForInvType(item.invType)
+            if item.quality <= maxQuality and equippedItemLevel and equippedItemLevel - item.level >= minLevelDiff then
+                if self:GetAdvancedJeweleryFilter() and jewelryType then
+                    local shouldKeep = self:GetTraitToKeepForSlot(jewelryType, itemID)
+                    if not shouldKeep and highestGeneral ~= item then
+                        tinsert(filteredItems, item)
+                    elseif shouldKeep and highestItem ~= item then
+                        tinsert(filteredItems, item)
+                    end
+                else
                     tinsert(filteredItems, item)
                 end
-            else
-                tinsert(filteredItems, item)
             end
-        end
-        if capReturn and #filteredItems >= capReturn then
-            break
+            if capReturn and #filteredItems >= capReturn then
+                break
+            end
         end
     end
     return filteredItems
@@ -319,4 +333,14 @@ end
 function scrappingUtils:ToggleTraitToKeepForSlot(slot, itemID)
     Private.Addon:ToggleDatabaseValue("char.scrapping.jeweleryTraitsToKeep." .. slot .. "." .. tostring(itemID), nil,
         true)
+end
+
+---@return boolean isIgnoreFromEquipmentSetsActive
+function scrappingUtils:GetIgnoreFromEquipmentSets()
+    return Private.Addon:GetDatabaseValue("scrapping.ignoreFromEquipmentSets", true)
+end
+
+---@param activateIgnoreFromEquipmentSets boolean
+function scrappingUtils:SetIgnoreFromEquipmentSets(activateIgnoreFromEquipmentSets)
+    Private.Addon:SetDatabaseValue("scrapping.ignoreFromEquipmentSets", activateIgnoreFromEquipmentSets)
 end

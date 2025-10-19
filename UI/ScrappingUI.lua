@@ -194,6 +194,7 @@ function scrappingUI:Init()
         checked = self.utils:GetAdvancedJeweleryFilter(),
         onClick = function(checked)
             self.utils:SetAdvancedJeweleryFilter(checked)
+            self:Refresh()
         end,
     })
 
@@ -254,6 +255,21 @@ function scrappingUI:Init()
         end
     })
     onlyJeweleryTraitsToKeep:GetDropdown():SetText(self.L["ScrappingUI.JewelryTraitsToKeep"])
+
+    local ignoreFromSets = components.CheckBox:CreateFrame(advancedSettings, {
+        anchors = {
+            { "TOPLEFT", onlyJeweleryTraitsToKeep.dropdown, 0, -30 },
+        },
+        width = 20,
+        height = 20,
+        text = self.L["ScrappingUI.IgnoreFromEquipmentSets"],
+        font = "GameFontNormalSmall",
+        checked = self.utils:GetIgnoreFromEquipmentSets(),
+        onClick = function(checked)
+            self.utils:SetIgnoreFromEquipmentSets(checked)
+            self:Refresh()
+        end,
+    })
 
     self.scrappingMachine:HookScript("OnShow", function()
         self:Refresh()

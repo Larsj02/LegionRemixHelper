@@ -73,6 +73,7 @@ local L = {
     ["ScrappingUI.Neck"] = "Черты ожерелья",
     ["ScrappingUI.Trinket"] = "Черты аксессуара",
     ["ScrappingUI.Finger"] = "Черты кольца",
+    ["ScrappingUI.IgnoreFromEquipmentSets"] = "Игнорировать предметы в комплектах снаряжения",
 
     -- Utils/ArtifactTraitUtils.lua
     ["ArtifactTraitUtils.NoItemEquipped"] = "Предмет не экипирован.",

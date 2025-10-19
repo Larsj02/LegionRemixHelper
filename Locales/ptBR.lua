@@ -72,6 +72,7 @@ local L = {
     ["ScrappingUI.Neck"] = "Traços de Colar",
     ["ScrappingUI.Trinket"] = "Traços de Berloque",
     ["ScrappingUI.Finger"] = "Traços de Anel",
+    ["ScrappingUI.IgnoreFromEquipmentSets"] = "Ignorar Itens em Conjuntos de Equipamento",
 
     -- Utils/ArtifactTraitUtils.lua
     ["ArtifactTraitUtils.NoItemEquipped"] = "Nenhum Item Equipado.",

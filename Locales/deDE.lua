@@ -72,6 +72,7 @@ local L = {
     ["ScrappingUI.Neck"] = "Hals-Traits",
     ["ScrappingUI.Trinket"] = "Schmuckstück-Traits",
     ["ScrappingUI.Finger"] = "Ring-Traits",
+    ["ScrappingUI.IgnoreFromEquipmentSets"] = "Items in Ausrüstungssets ignorieren",
 
     -- Utils/ArtifactTraitUtils.lua
     ["ArtifactTraitUtils.NoItemEquipped"] = "Kein Gegenstand ausgerüstet.",

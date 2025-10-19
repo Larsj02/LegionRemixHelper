@@ -8,6 +8,7 @@ local defaultDatabase = {
         minLevelDiff = 0,
         autoScrap = false,
         advancedJeweleryFilter = false,
+        ignoreFromEquipmentSets = false,
     },
     collectionsTab = {
         selected = 1,
