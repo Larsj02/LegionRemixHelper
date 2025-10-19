@@ -42,6 +42,10 @@ function merchantUtils:CreateSettings()
         self.L["MerchantUtils.HideCollectedMerchantItems"],
         self.L["MerchantUtils.HideCollectedMerchantItemsTooltip"], true,
         settingsUtils:GetDBFunc("GETTERSETTER", "merchant.hideCollectedItems"))
+    settingsUtils:CreateCheckbox(settingsCategory, "HIDE_COLLECTED_PETS_AT_LIMIT", "BOOLEAN",
+        self.L["MerchantUtils.HideCollectedPetsAtLimit"],
+        self.L["MerchantUtils.HideCollectedPetsAtLimitTooltip"], true,
+        settingsUtils:GetDBFunc("GETTERSETTER", "merchant.hideCollectedPetsAtLimit"))
 end
 
 function merchantUtils:UpdateMerchantBtn(btn, i)
@@ -156,6 +160,26 @@ function merchantUtils:IsSettingsAndMerchantValid()
     return true
 end
 
+function merchantUtils:ShouldHidePetsAtLimit()
+    return self.addon:GetDatabaseValue("merchant.hideCollectedPetsAtLimit", true)
+end
+
+function merchantUtils:IsFilteredOut(itemID)
+    if not itemID then return false end
+    local speciesID = select(13, C_PetJournal.GetPetInfoByItemID(itemID))
+    if speciesID then
+        local shouldHidePetsAtLimit = self:ShouldHidePetsAtLimit()
+        local collected, limit = C_PetJournal.GetNumCollectedInfo(speciesID)
+        local isAtLimit = collected >= limit
+
+        if shouldHidePetsAtLimit and isAtLimit then
+            return true
+        end
+        return (not shouldHidePetsAtLimit) and (collected > 0)
+    end
+    return false
+end
+
 function merchantUtils:OnMerchantShow()
     if not self:IsSettingsAndMerchantValid() then
         return
@@ -164,7 +188,7 @@ function merchantUtils:OnMerchantShow()
     self.filteredVendorItems = {}
     for i = 1, GetMerchantNumItems() do
         local itemID = GetMerchantItemID(i)
-        if not self:IsItemCollected(itemID) then
+        if not (self:IsItemCollected(itemID) or self:IsFilteredOut(itemID)) then
             tinsert(self.filteredVendorItems, i)
         end
     end

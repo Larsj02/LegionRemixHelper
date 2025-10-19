@@ -126,6 +126,8 @@ Esempio: /LRH s]],
     ["MerchantUtils.SettingsCategoryTooltip"] = "Impostazioni per la funzionalità Mercante",
     ["MerchantUtils.HideCollectedMerchantItems"] = "Nascondi oggetti mercante raccolti",
     ["MerchantUtils.HideCollectedMerchantItemsTooltip"] = "Nasconde gli oggetti che hai già nella tua collezione dalla finestra del mercante.",
+    ["MerchantUtils.HideCollectedPetsAtLimit"] = "Nascondi animali domestici raccolti al limite",
+    ["MerchantUtils.HideCollectedPetsAtLimitTooltip"] = "Nasconde gli animali domestici nella finestra del mercante solo quando hai raggiunto il limite di raccolta per gli animali domestici.",
 
     -- Utils/QuestUtils.lua
     ["QuestUtils.SettingsCategoryPrefix"] = "Missioni automatiche",

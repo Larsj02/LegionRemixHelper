@@ -126,6 +126,8 @@ Exemplos: /LRH s]],
     ["MerchantUtils.SettingsCategoryTooltip"] = "Configurações para o recurso Vendedor",
     ["MerchantUtils.HideCollectedMerchantItems"] = "Ocultar itens coletados do vendedor",
     ["MerchantUtils.HideCollectedMerchantItemsTooltip"] = "Oculta itens na janela do vendedor que você já tem em sua coleção.",
+    ["MerchantUtils.HideCollectedPetsAtLimit"] = "Ocultar Animais de Estimação Coletados ao Limite",
+    ["MerchantUtils.HideCollectedPetsAtLimitTooltip"] = "Oculta animais de estimação na janela do vendedor apenas quando você atingiu o limite de coleção para animais de estimação.",
 
     -- Utils/QuestUtils.lua
     ["QuestUtils.SettingsCategoryPrefix"] = "Missões-Automáticas",

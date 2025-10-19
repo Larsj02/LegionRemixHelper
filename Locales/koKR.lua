@@ -126,6 +126,8 @@ local L = {
     ["MerchantUtils.SettingsCategoryTooltip"] = "상점 기능 설정",
     ["MerchantUtils.HideCollectedMerchantItems"] = "수집된 상점 아이템 숨기기",
     ["MerchantUtils.HideCollectedMerchantItemsTooltip"] = "상점 창에서 이미 보유한 수집품 아이템을 숨깁니다.",
+    ["MerchantUtils.HideCollectedPetsAtLimit"] = "수집된 애완동물 숨기기 (제한 도달 시)",
+    ["MerchantUtils.HideCollectedPetsAtLimitTooltip"] = "애완동물이 수집 한도를 초과했을 때만 상점 창에서 숨깁니다.",
 
     -- Utils/QuestUtils.lua
     ["QuestUtils.SettingsCategoryPrefix"] = "자동 퀘스트",

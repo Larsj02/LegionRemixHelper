@@ -126,6 +126,8 @@ Example: /LRH s]],
     ["MerchantUtils.SettingsCategoryTooltip"] = "商人功能的設定",
     ["MerchantUtils.HideCollectedMerchantItems"] = "隱藏已收藏的商人物品",
     ["MerchantUtils.HideCollectedMerchantItemsTooltip"] = "在商人視窗中隱藏你已收藏的物品。",
+    ["MerchantUtils.HideCollectedPetsAtLimit"] = "達到上限時隱藏已收集的寵物",
+    ["MerchantUtils.HideCollectedPetsAtLimitTooltip"] = "僅在達到寵物收集上限時隱藏商人視窗中的寵物。",
 
     -- Utils/QuestUtils.lua
     ["QuestUtils.SettingsCategoryPrefix"] = "自動任務",
