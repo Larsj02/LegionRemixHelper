@@ -16,18 +16,17 @@ Private.ItemOpenerUtils = itemOpenerUtils
 
 function itemOpenerUtils:CreateSettings(items)
     local settingsUtils = Private.SettingsUtils
-    local settingsCategory = settingsUtils:GetCategory()
     local settingsPrefix = self.L["ItemOpenerUtils.SettingsCategoryPrefix"]
 
-    settingsUtils:CreateHeader(settingsCategory, settingsPrefix, self.L["ItemOpenerUtils.SettingsCategoryTooltip"],
+    settingsUtils:CreateHeader(settingsPrefix, self.L["ItemOpenerUtils.SettingsCategoryTooltip"],
         { settingsPrefix })
-    settingsUtils:CreateCheckbox(settingsCategory, "AUTO_ITEM_OPEN", "BOOLEAN", self.L["ItemOpenerUtils.AutoItemOpen"],
+    settingsUtils:CreateCheckbox("AUTO_ITEM_OPEN", "BOOLEAN", self.L["ItemOpenerUtils.AutoItemOpen"],
         self.L["ItemOpenerUtils.AutoItemOpenTooltip"], true,
         settingsUtils:GetDBFunc("GETTERSETTER", "itemOpener.autoItemOpen"))
 
     local openItemTooltip = self.L["ItemOpenerUtils.AutoOpenItemEntryTooltip"]
     for _, itemData in ipairs(items) do
-        settingsUtils:CreateCheckbox(settingsCategory, "AUTO_ITEM_OPEN_" .. itemData.id, "BOOLEAN",
+        settingsUtils:CreateCheckbox("AUTO_ITEM_OPEN_" .. itemData.id, "BOOLEAN",
             itemData.link,
             openItemTooltip:format(itemData.link), true,
             settingsUtils:GetDBFunc("GETTERSETTER", "itemOpener.items." .. itemData.id))

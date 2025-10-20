@@ -2,7 +2,7 @@
 local Private = select(2, ...)
 
 ---@alias SettingsUtilsTypes
----|"BOOLEAN"
+---| "BOOLEAN"
 ---| "NUMBER"
 ---| "STRING"
 
@@ -12,10 +12,10 @@ local Private = select(2, ...)
 
 ---@class SettingsUtils
 ---@field addon LegionRH
----@field category any
+---@field settings RF-Settings
 local settingsUtils = {
     addon = nil,
-    category = nil,
+    settings = nil,
 }
 Private.SettingsUtils = settingsUtils
 
@@ -41,15 +41,14 @@ function settingsUtils:GetDBFunc(funcType, setting, default)
 end
 
 function settingsUtils:Init()
+    local RFSettings = LibStub("RasuForge-Settings")
     local addon = Private.Addon
     self.addon = addon
 
-    local category = Settings.RegisterVerticalLayoutCategory(addon.DisplayName)
-    Settings.RegisterAddOnCategory(category)
-    self.category = category
+    local settings = RFSettings:NewCategory(addon.DisplayName)
+    self.settings = settings
 end
 
----@param category any
 ---@param lookup string
 ---@param varType SettingsUtilsTypes
 ---@param title string
@@ -57,37 +56,30 @@ end
 ---@param default any
 ---@param getter fun(): any
 ---@param setter fun(newValue: any)
----@return table initializer, table options
-function settingsUtils:CreateCheckbox(category, lookup, varType, title, tooltip, default, getter, setter)
-    local setting = Settings.RegisterProxySetting(category, lookup,
-        typeConst[varType], title, default, getter, setter)
-    return Settings.CreateCheckbox(category, setting, tooltip)
+---@return SettingsElementInitializer initializer
+function settingsUtils:CreateCheckbox(lookup, varType, title, tooltip, default, getter, setter)
+    ---@type SettingsVariableType
+    local convertedVarType = typeConst[varType]
+    return self.settings:CreateCheckbox(lookup, convertedVarType, title, default, getter, setter, tooltip)
 end
 
----@param category any
 ---@param lookup string
 ---@param varType SettingsUtilsTypes
 ---@param title string
 ---@param tooltip string?
 ---@param default any
----@param minValue number
----@param maxValue number
----@param step number
+---@param minValue number|nil
+---@param maxValue number|nil
+---@param step number|nil
 ---@param getter fun(): any
 ---@param setter fun(newValue: any)
----@return table initializer, table options
-function settingsUtils:CreateSlider(category, lookup, varType, title, tooltip, default, minValue, maxValue, step, getter,
-                                    setter)
-    local setting = Settings.RegisterProxySetting(category, lookup,
-        typeConst[varType], title, default, getter, setter)
-    local options = Settings.CreateSliderOptions(minValue, maxValue, step)
-    options:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right)
-    local initializer = Settings.CreateSlider(category, setting, options, tooltip)
-
-    return initializer, options
+---@return SettingsElementInitializer initializer
+function settingsUtils:CreateSlider(lookup, varType, title, tooltip, default, minValue, maxValue, step, getter, setter)
+    ---@type SettingsVariableType
+    local convertedVarType = typeConst[varType]
+    return self.settings:CreateSlider(lookup, convertedVarType, title, default, getter, setter, minValue, maxValue, step, tooltip)
 end
 
----@param category any
 ---@param lookup string
 ---@param varType SettingsUtilsTypes
 ---@param title string
@@ -96,61 +88,45 @@ end
 ---@param options SettingsDropdownOption[]
 ---@param getter fun(): any
 ---@param setter fun(newValue: any)
----@return table initializer
-function settingsUtils:CreateDropdown(category, lookup, varType, title, tooltip, default, options, getter, setter)
-    local setting = Settings.RegisterProxySetting(category, lookup,
-        typeConst[varType], title, default, getter, setter)
+---@return SettingsElementInitializer initializer
+function settingsUtils:CreateDropdown(lookup, varType, title, tooltip, default, options, getter, setter)
+    ---@type SettingsVariableType
+    local convertedVarType = typeConst[varType]
 
-    local function getOptions()
-        local container = Settings.CreateControlTextContainer()
-        for _, option in ipairs(options) do
-            container:Add(option.key, option.text)
-        end
-        return container:GetData()
+    local convertedOptions = {}
+    for i, option in ipairs(options) do
+        convertedOptions[i] = {
+            label = option.text,
+            value = option.key,
+            text = option.text,
+        }
     end
-    return Settings.CreateDropdown(category, setting, getOptions, tooltip)
+    return self.settings:CreateDropdown(lookup, convertedVarType, title, default, getter, setter, convertedOptions, tooltip)
 end
 
----@param category any
 ---@param initializer any
----@return table layout
-function settingsUtils:AddToCategoryLayout(category, initializer)
-    local layout = SettingsPanel:GetLayout(category)
-    layout:AddInitializer(initializer)
-    return layout
+function settingsUtils:AddToCategoryLayout(initializer)
+    self.settings:AddInitializer(initializer)
 end
 
----@param category any
 ---@param title string
 ---@param text string
 ---@param onClick fun()
 ---@param tooltip string?
 ---@param addToSearch boolean?
----@return table initializer
-function settingsUtils:CreateButton(category, title, text, onClick, tooltip, addToSearch)
-    local initializer = CreateSettingsButtonInitializer(title, text, onClick, tooltip, addToSearch)
-    self:AddToCategoryLayout(category, initializer)
-    return initializer
+---@return SettingsElementInitializer initializer
+function settingsUtils:CreateButton(title, text, onClick, tooltip, addToSearch)
+    return self.settings:CreateButton(title, text, onClick, tooltip, addToSearch)
 end
 
----@param category any
 ---@param title string
 ---@param tooltip string?
 ---@param searchTags string[]?
----@return table initializer
-function settingsUtils:CreateHeader(category, title, tooltip, searchTags)
-    local initializer = CreateSettingsListSectionHeaderInitializer(title, tooltip)
-    initializer:AddSearchTags(unpack(searchTags or {}))
-    self:AddToCategoryLayout(category, initializer)
-    return initializer
+---@return SettingsElementInitializer initializer
+function settingsUtils:CreateHeader(title, tooltip, searchTags)
+    return self.settings:CreateHeader(title, tooltip, searchTags)
 end
 
----@return table category
-function settingsUtils:GetCategory()
-    return self.category
-end
-
----@param category table
 ---@param template string?
 ---@param data table?
 ---@param height number?
@@ -158,69 +134,13 @@ end
 ---@param onInit fun(frame: Frame, data: table?)
 ---@param onDefaulted fun()?
 ---@param searchTags string[]?
----@return table initializer
-function settingsUtils:CreatePanel(category, template, data, height, identifier, onInit, onDefaulted, searchTags)
-    local initializer = Settings.CreatePanelInitializer(template or "BackdropTemplate", data or {})
-    identifier = identifier or "default"
-
-    function initializer:GetExtent()
-        return self.height
-    end
-
-    function initializer:SetHeight(newHeight)
-        self.height = newHeight
-    end
-
-    function initializer:InitFrame(frame)
-        if self.onInit then
-            self.onInit(frame, self.data)
-        end
-    end
-
-    function initializer:SetOnInit(callback)
-        self.onInit = callback
-    end
-
-    function initializer:TriggerOnDefaulted()
-        if self.onDefaulted then
-            self.onDefaulted()
-        end
-    end
-
-    function initializer:SetOnDefaulted(callback)
-        self.onDefaulted = callback
-    end
-
-    EventRegistry:RegisterCallback("Settings.Defaulted", function()
-        initializer:TriggerOnDefaulted()
-    end)
-    EventRegistry:RegisterCallback("Settings.CategoryDefaulted", function(_, defaultedCategory)
-        if defaultedCategory:GetID() == category:GetID() then
-            initializer:TriggerOnDefaulted()
-        end
-    end)
-
-    initializer:SetHeight(height or 200)
-    initializer:SetOnInit(function(frame, panelData)
-        if not frame.panelFrames then
-            frame.panelFrames = {}
-        end
-        for _, f in pairs(frame.panelFrames) do
-            f:Hide()
-        end
-        local panel = frame.panelFrames[identifier]
-        if not panel then
-            panel = CreateFrame("Frame", nil, frame, template or "BackdropTemplate")
-            panel:SetAllPoints()
-            frame.panelFrames[identifier] = panel
-        end
-        onInit(panel, panelData)
-        panel:Show()
-    end)
-    initializer:SetOnDefaulted(onDefaulted)
-    initializer:AddSearchTags(unpack(searchTags or {}))
-
-    self:AddToCategoryLayout(category, initializer)
-
-    return initializer
+---@return SettingsElementInitializer initializer
+function settingsUtils:CreatePanel(template, data, height, identifier, onInit, onDefaulted, searchTags)
+    return self.settings:CreatePanel(identifier, onInit, data, template, height, onDefaulted, searchTags)
 end
+
+function settingsUtils:Open()
+    self.settings:Open()
+end
+
+-- For now we just ensure backward compatibility

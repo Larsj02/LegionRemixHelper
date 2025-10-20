@@ -88,30 +88,29 @@ end
 
 function toastUtils:CreateSettings()
     local settingsUtils = Private.SettingsUtils
-    local settingsCategory = settingsUtils:GetCategory()
     local settingsPrefix = self.L["ToastUtils.SettingsCategoryPrefix"]
 
-    settingsUtils:CreateHeader(settingsCategory, settingsPrefix, self.L["ToastUtils.SettingsCategoryTooltip"],
+    settingsUtils:CreateHeader(settingsPrefix, self.L["ToastUtils.SettingsCategoryTooltip"],
         { settingsPrefix })
-    settingsUtils:CreateCheckbox(settingsCategory, "ACTIVATE_TOAST_GENERAL", "BOOLEAN", self.L["ToastUtils.TypeGeneral"],
+    settingsUtils:CreateCheckbox("ACTIVATE_TOAST_GENERAL", "BOOLEAN", self.L["ToastUtils.TypeGeneral"],
         self.L["ToastUtils.TypeGeneralTooltip"], true,
         settingsUtils:GetDBFunc("GETTERSETTER", "toast.activate"))
-    settingsUtils:CreateCheckbox(settingsCategory, "ACTIVATE_TOAST_SOUND", "BOOLEAN", self.L["ToastUtils.TypeSound"],
+    settingsUtils:CreateCheckbox("ACTIVATE_TOAST_SOUND", "BOOLEAN", self.L["ToastUtils.TypeSound"],
         self.L["ToastUtils.TypeSoundTooltip"], true,
         settingsUtils:GetDBFunc("GETTERSETTER", "toast.sound"))
-    settingsUtils:CreateCheckbox(settingsCategory, "ACTIVATE_TOAST_BRONZE", "BOOLEAN", self.L["ToastUtils.TypeBronze"],
+    settingsUtils:CreateCheckbox("ACTIVATE_TOAST_BRONZE", "BOOLEAN", self.L["ToastUtils.TypeBronze"],
         self.L["ToastUtils.TypeBronzeTooltip"], true,
         settingsUtils:GetDBFunc("GETTERSETTER", "toast.bronze"))
-    settingsUtils:CreateCheckbox(settingsCategory, "ACTIVATE_TOAST_ARTIFACT", "BOOLEAN", self.L["ToastUtils.TypeArtifact"],
+    settingsUtils:CreateCheckbox("ACTIVATE_TOAST_ARTIFACT", "BOOLEAN", self.L["ToastUtils.TypeArtifact"],
         self.L["ToastUtils.TypeArtifactTooltip"], true,
         settingsUtils:GetDBFunc("GETTERSETTER", "toast.artifact"))
-    settingsUtils:CreateCheckbox(settingsCategory, "ACTIVATE_TOAST_UPGRADE", "BOOLEAN", self.L["ToastUtils.TypeUpgrade"],
+    settingsUtils:CreateCheckbox("ACTIVATE_TOAST_UPGRADE", "BOOLEAN", self.L["ToastUtils.TypeUpgrade"],
         self.L["ToastUtils.TypeUpgradeTooltip"], true,
         settingsUtils:GetDBFunc("GETTERSETTER", "toast.upgrade"))
-    settingsUtils:CreateCheckbox(settingsCategory, "ACTIVATE_TOAST_TRAIT", "BOOLEAN", self.L["ToastUtils.TypeTrait"],
+    settingsUtils:CreateCheckbox("ACTIVATE_TOAST_TRAIT", "BOOLEAN", self.L["ToastUtils.TypeTrait"],
         self.L["ToastUtils.TypeTraitTooltip"], true,
         settingsUtils:GetDBFunc("GETTERSETTER", "toast.trait"))
-    settingsUtils:CreateButton(settingsCategory, self.L["ToastUtils.TestToast"],
+    settingsUtils:CreateButton(self.L["ToastUtils.TestToast"],
         self.L["ToastUtils.TestToastButtonTitle"],
         function()
             self:ShowToast(self.L["ToastUtils.TestToastTitle"], self.L["ToastUtils.TestToastDescription"], const.TOASTS.PLACEHOLDER_ICON)

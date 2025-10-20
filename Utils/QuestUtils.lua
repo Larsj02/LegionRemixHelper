@@ -46,24 +46,23 @@ end
 
 function questUtils:CreateSettings()
     local settingsUtils = Private.SettingsUtils
-    local settingsCategory = settingsUtils:GetCategory()
     local settingsPrefix = self.L["QuestUtils.SettingsCategoryPrefix"]
 
-    settingsUtils:CreateHeader(settingsCategory, settingsPrefix, self.L["QuestUtils.SettingsCategoryTooltip"],
+    settingsUtils:CreateHeader(settingsPrefix, self.L["QuestUtils.SettingsCategoryTooltip"],
         { settingsPrefix })
-    settingsUtils:CreateCheckbox(settingsCategory, "AUTO_QUEST_TURN_IN", "BOOLEAN", self.L["QuestUtils.AutoTurnIn"],
+    settingsUtils:CreateCheckbox("AUTO_QUEST_TURN_IN", "BOOLEAN", self.L["QuestUtils.AutoTurnIn"],
         self.L["QuestUtils.AutoTurnInTooltip"], true,
         settingsUtils:GetDBFunc("GETTERSETTER", "quest.autoTurnIn"))
-    settingsUtils:CreateCheckbox(settingsCategory, "AUTO_QUEST_ACCEPT", "BOOLEAN", self.L["QuestUtils.AutoAccept"],
+    settingsUtils:CreateCheckbox("AUTO_QUEST_ACCEPT", "BOOLEAN", self.L["QuestUtils.AutoAccept"],
         self.L["QuestUtils.AutoAcceptTooltip"], true,
         settingsUtils:GetDBFunc("GETTERSETTER", "quest.autoAccept"))
-    settingsUtils:CreateCheckbox(settingsCategory, "AUTO_QUEST_IGNORE_ETERNUS", "BOOLEAN", self.L["QuestUtils.IgnoreEternus"],
+    settingsUtils:CreateCheckbox("AUTO_QUEST_IGNORE_ETERNUS", "BOOLEAN", self.L["QuestUtils.IgnoreEternus"],
         self.L["QuestUtils.IgnoreEternusTooltip"], true,
         settingsUtils:GetDBFunc("GETTERSETTER", "quest.ignoreEternus"))
-    settingsUtils:CreateCheckbox(settingsCategory, "AUTO_QUEST_SURPRESS_SHIFT", "BOOLEAN", self.L["QuestUtils.SuppressShift"],
+    settingsUtils:CreateCheckbox("AUTO_QUEST_SURPRESS_SHIFT", "BOOLEAN", self.L["QuestUtils.SuppressShift"],
         self.L["QuestUtils.SuppressShiftTooltip"], true,
         settingsUtils:GetDBFunc("GETTERSETTER", "quest.suppressShift"))
-    settingsUtils:CreateCheckbox(settingsCategory, "AUTO_QUEST_HIDE_WORLD_TIER_ICON", "BOOLEAN", self.L["QuestUtils.SuppressWorldTierIcon"],
+    settingsUtils:CreateCheckbox("AUTO_QUEST_HIDE_WORLD_TIER_ICON", "BOOLEAN", self.L["QuestUtils.SuppressWorldTierIcon"],
         self.L["QuestUtils.SuppressWorldTierIconTooltip"], false,
         settingsUtils:GetDBFunc("GETTERSETTER", "quest.suppressWorldTierIcon"))
 end

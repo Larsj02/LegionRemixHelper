@@ -1,0 +1,3 @@
+[submodule "Libs/RasuForge-Settings"]
+	path = Libs/RasuForge-Settings
+	url = https://github.com/Larsj02/RasuForge-Settings

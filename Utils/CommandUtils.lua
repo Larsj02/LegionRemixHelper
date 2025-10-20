@@ -48,7 +48,7 @@ function commandUtils:OnUnknownCommand(addon)
 end
 
 function commandUtils:OnSettingsCommand()
-    Settings.OpenToCategory(Private.SettingsUtils:GetCategory():GetID() or 0)
+    Private.SettingsUtils:Open()
 end
 
 function commandUtils:OnCollectionsCommand()

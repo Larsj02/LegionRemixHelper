@@ -4,5 +4,6 @@
     <script file="LibStub/LibStub.lua" />
     <Include file="RasuLibs/RasuLib.xml" />
     <Include file="RasuLocale/lib.xml" />
+    <Include file="RasuForge-Settings/lib.xml" />
     <script file="SecureTabs-2.0/SecureTabs-2.0.lua" />
 </Ui>

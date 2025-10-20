@@ -174,7 +174,8 @@
         "INVSLOT_FINGER2",
         "INVSLOT_TRINKET1",
         "INVSLOT_TRINKET2",
-        "UIWidgetBelowMinimapContainerFrame"
+        "UIWidgetBelowMinimapContainerFrame",
+        "SettingsCategoryMixin"
     ],
     "Lua.type.weakUnionCheck": true,
     "Lua.diagnostics.disable": [
