@@ -1,4 +1,3 @@
 # Ignore macOS .DS_Store files in all directories
 **/.DS_Store
 /.vs
-/.gitignore
