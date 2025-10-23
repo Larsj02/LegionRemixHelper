@@ -218,7 +218,7 @@ end
 
 ---@return number|nil npcID
 function merchantUtils:GetNpcID()
-    local guid = UnitGUID("npc") or UnitGUID("target")
+    local guid = UnitGUID("npc")
     if not guid then
         return nil
     end
