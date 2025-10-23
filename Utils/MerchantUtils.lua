@@ -33,7 +33,7 @@ function merchantUtils:Init()
     -- updates. This mirrors what toggling the option manually forces.
     addon:RegisterEvent("MERCHANT_UPDATE", "MerchantUtils_MerchantUpdate", function()
         -- Rebuild the filtered list and update UI when merchant data changes
-        self:OnMerchantShow()
+        self:RefreshMerchant()
     end)
 
     -- Hook the broader frame update to ensure our UpdateMerchant runs whenever
@@ -197,7 +197,8 @@ function merchantUtils:IsFilteredOut(itemID)
     return false
 end
 
-function merchantUtils:OnMerchantShow()
+-- General-purpose merchant refresh used for show/update events
+function merchantUtils:RefreshMerchant()
     if not self:IsSettingsAndMerchantValid() then
         return
     end
@@ -216,9 +217,14 @@ function merchantUtils:OnMerchantShow()
     self:UpdateMerchant()
 end
 
+-- Keep the original handler name as a thin wrapper for compatibility
+function merchantUtils:OnMerchantShow()
+    self:RefreshMerchant()
+end
+
 ---@return number|nil npcID
 function merchantUtils:GetNpcID()
-    local guid = UnitGUID("npc")
+    local guid = UnitGUID("npc") or UnitGUID("target")
     if not guid then
         return nil
     end
