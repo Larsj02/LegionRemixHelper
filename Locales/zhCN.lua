@@ -60,8 +60,8 @@ local L = {
 
     -- UI/ScrappingUI.lua
     ["ScrappingUI.MaxScrappingQuality"] = "最大拆解品质",
-    ["ScrappingUI.MinItemLevelDifference"] = "最低物品等级",
-    ["ScrappingUI.MinItemLevelDifferenceInstructions"] = "比装备低 x 级",
+    ["ScrappingUI.MinItemLevelDifference"] = "低于物品等级",
+    ["ScrappingUI.MinItemLevelDifferenceInstructions"] = "比装备的物品等级低x级",
     ["ScrappingUI.AutoScrap"] = "自动拆解",
     ["ScrappingUI.ScraperListTabTitle"] = "拆解列表",
     ["ScrappingUI.AdvancedSettingsTabTitle"] = "更多设置",
@@ -72,7 +72,7 @@ local L = {
     ["ScrappingUI.Neck"] = "项链及特质",
     ["ScrappingUI.Trinket"] = "饰品及特质",
     ["ScrappingUI.Finger"] = "戒指及特质",
-    ["ScrappingUI.IgnoreFromEquipmentSets"] = "忽略装备套装中的物品",
+    ["ScrappingUI.IgnoreFromEquipmentSets"] = "忽略装备配置中的物品",
 
     -- Utils/ArtifactTraitUtils.lua
     ["ArtifactTraitUtils.NoItemEquipped"] = "未装备物品。",
