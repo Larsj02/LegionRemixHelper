@@ -34,7 +34,7 @@ local L = {
     -- UI/CollectionsTabUI.lua
     ["CollectionsTabUI.TabTitle"] = "Legion Remix",
     ["CollectionsTabUI.ResearchProgress"] = "Исследование: %s/%s",
-    ["CollectionsTabUI.TraitsTabTitle"] = "Особенности артефакта",
+    ["CollectionsTabUI.TraitsTabTitle"] = "Артефакт",
     ["CollectionsTabUI.CollectionTabTitle"] = "Коллекция",
 
     -- UI/QuickActionBarUI.lua
@@ -65,7 +65,7 @@ local L = {
     ["ScrappingUI.MinItemLevelDifferenceInstructions"] = "уровней ниже экипированного",
     ["ScrappingUI.AutoScrap"] = "Авторазбор",
     ["ScrappingUI.ScraperListTabTitle"] = "Список разбора",
-    ["ScrappingUI.AdvancedSettingsTabTitle"] = "Дополнительные настройки",
+    ["ScrappingUI.AdvancedSettingsTabTitle"] = "Доп. настройки",
     ["ScrappingUI.JewelryTraitsToKeep"] = "Черты украшений для сохранения",
     ["ScrappingUI.AdvancedJewelryFilter"] = "Расширенный фильтр украшений",
     ["ScrappingUI.FilterCheckAll"] = "Выбрать все",
@@ -73,7 +73,7 @@ local L = {
     ["ScrappingUI.Neck"] = "Черты ожерелья",
     ["ScrappingUI.Trinket"] = "Черты аксессуара",
     ["ScrappingUI.Finger"] = "Черты кольца",
-    ["ScrappingUI.IgnoreFromEquipmentSets"] = "Игнорировать предметы в комплектах снаряжения",
+    ["ScrappingUI.IgnoreFromEquipmentSets"] = "Игнорировать предметы в комплектах",
 
     -- Utils/ArtifactTraitUtils.lua
     ["ArtifactTraitUtils.NoItemEquipped"] = "Предмет не экипирован.",
