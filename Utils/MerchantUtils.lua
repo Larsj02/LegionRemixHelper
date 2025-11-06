@@ -22,10 +22,27 @@ function merchantUtils:Init()
     local addon = Private.Addon
     self.addon = addon
 
+    -- Rebuild filtered items when the merchant window is first shown
     addon:RegisterEvent("MERCHANT_SHOW", "MerchantUtils_MerchantShow", function()
         self:OnMerchantShow()
     end)
 
+    -- Merchant inventory can change in multiple ways; make the addon reapply
+    -- the filter whenever the merchant frame updates (covers paging, tab
+    -- changes and some Blizzard updates) and when the merchant data itself
+    -- updates. This mirrors what toggling the option manually forces.
+    addon:RegisterEvent("MERCHANT_UPDATE", "MerchantUtils_MerchantUpdate", function()
+        -- Rebuild the filtered list and update UI when merchant data changes
+        self:RefreshMerchant()
+    end)
+
+    -- Hook the broader frame update to ensure our UpdateMerchant runs whenever
+    -- Blizzard refreshes the merchant UI layout.
+    hooksecurefunc("MerchantFrame_Update", function()
+        self:UpdateMerchant()
+    end)
+
+    -- Keep the existing, more specific hook as a fallback for API differences
     hooksecurefunc("MerchantFrame_UpdateMerchantInfo", function()
         self:UpdateMerchant()
     end)
@@ -180,7 +197,8 @@ function merchantUtils:IsFilteredOut(itemID)
     return false
 end
 
-function merchantUtils:OnMerchantShow()
+-- General-purpose merchant refresh used for show/update events
+function merchantUtils:RefreshMerchant()
     if not self:IsSettingsAndMerchantValid() then
         return
     end
@@ -199,9 +217,14 @@ function merchantUtils:OnMerchantShow()
     self:UpdateMerchant()
 end
 
+-- Keep the original handler name as a thin wrapper for compatibility
+function merchantUtils:OnMerchantShow()
+    self:RefreshMerchant()
+end
+
 ---@return number|nil npcID
 function merchantUtils:GetNpcID()
-    local guid = UnitGUID("npc")
+    local guid = UnitGUID("npc") or UnitGUID("target")
     if not guid then
         return nil
     end
