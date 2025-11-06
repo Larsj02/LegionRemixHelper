@@ -72,6 +72,30 @@ This addon is for the community. If you have a bug report, a feature request, or
 
 ---
 
+## 🧰 Developer Setup (Submodules)
+
+This repo uses Git submodules (e.g., `Libs/RasuForge-Settings`). Make sure to initialize them when cloning or pulling changes.
+
+- First clone with submodules:
+
+	```bash
+	git clone --recurse-submodules https://github.com/Larsj02/LegionRemixHelper.git
+	```
+
+- If you already cloned:
+
+	```bash
+	git submodule update --init --recursive
+	```
+
+- To update submodules to their recorded commits after pulling:
+
+	```bash
+	git submodule update --recursive
+	```
+
+---
+
 ## ❤️ Support My Work
 
 Creating and maintaining addons like this is a passion project, driven by my love for the WoW community. I pour hundreds of hours into development to make your gaming experience better.

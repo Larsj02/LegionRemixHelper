@@ -229,12 +229,11 @@ end
 
 function quickActionBarUtils:CreateSettings()
     local settingsUtils = Private.SettingsUtils
-    local settingsCategory = settingsUtils:GetCategory()
     local settingsPrefix = self.L["QuickActionBarUtils.SettingsCategoryPrefix"]
 
-    settingsUtils:CreateHeader(settingsCategory, settingsPrefix, self.L["QuickActionBarUtils.SettingsCategoryTooltip"],
+    settingsUtils:CreateHeader(settingsPrefix, self.L["QuickActionBarUtils.SettingsCategoryTooltip"],
         { settingsPrefix })
-    settingsUtils:CreatePanel(settingsCategory, nil, nil, 400, "QuickActionBarSettingsPanel", Private.QuickActionBarUI:GetTreeSettingsInitializer(),
+    settingsUtils:CreatePanel(nil, nil, 400, "QuickActionBarSettingsPanel", Private.QuickActionBarUI:GetTreeSettingsInitializer(),
         self:GetOnDefaulted(), { settingsPrefix })
 end
 

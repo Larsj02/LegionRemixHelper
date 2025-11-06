@@ -50,16 +50,15 @@ end
 
 function merchantUtils:CreateSettings()
     local settingsUtils = Private.SettingsUtils
-    local settingsCategory = settingsUtils:GetCategory()
     local settingsPrefix = self.L["MerchantUtils.SettingsCategoryPrefix"]
 
-    settingsUtils:CreateHeader(settingsCategory, settingsPrefix, self.L["MerchantUtils.SettingsCategoryTooltip"],
+    settingsUtils:CreateHeader(settingsPrefix, self.L["MerchantUtils.SettingsCategoryTooltip"],
         { settingsPrefix })
-    settingsUtils:CreateCheckbox(settingsCategory, "HIDE_COLLECTED_MERCHANT_ITEMS", "BOOLEAN",
+    settingsUtils:CreateCheckbox("HIDE_COLLECTED_MERCHANT_ITEMS", "BOOLEAN",
         self.L["MerchantUtils.HideCollectedMerchantItems"],
         self.L["MerchantUtils.HideCollectedMerchantItemsTooltip"], true,
         settingsUtils:GetDBFunc("GETTERSETTER", "merchant.hideCollectedItems"))
-    settingsUtils:CreateCheckbox(settingsCategory, "HIDE_COLLECTED_PETS_AT_LIMIT", "BOOLEAN",
+    settingsUtils:CreateCheckbox("HIDE_COLLECTED_PETS_AT_LIMIT", "BOOLEAN",
         self.L["MerchantUtils.HideCollectedPetsAtLimit"],
         self.L["MerchantUtils.HideCollectedPetsAtLimitTooltip"], true,
         settingsUtils:GetDBFunc("GETTERSETTER", "merchant.hideCollectedPetsAtLimit"))
