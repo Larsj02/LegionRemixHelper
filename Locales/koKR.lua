@@ -72,7 +72,7 @@ local L = {
     ["ScrappingUI.Neck"] = "목걸이 특성",
     ["ScrappingUI.Trinket"] = "장신구 특성",
     ["ScrappingUI.Finger"] = "반지 특성",
-    ["ScrappingUI.IgnoreFromEquipmentSets"] = "장비 세트의 아이템 무시",
+    ["ScrappingUI.IgnoreFromEquipmentSets"] = "장비 구성된 아이템 무시",
 
     -- Utils/ArtifactTraitUtils.lua
     ["ArtifactTraitUtils.NoItemEquipped"] = "장착된 아이템이 없습니다.",
