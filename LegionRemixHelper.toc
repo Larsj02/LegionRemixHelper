@@ -4,6 +4,7 @@
 ## Author: Rasu | Larsj_02
 ## DefaultState: enabled
 ## IconTexture: Interface\Addons\LegionRemixHelper\Media\Textures\logo.tga
+## OptionalDeps: EasyScrap
 ## SavedVariables: LegionRemixHelperDB
 ## SavedVariablesPerCharacter: LegionRemixHelperCharDB
 ## X-Curse-Project-ID: 1352479

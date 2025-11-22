@@ -22,6 +22,9 @@ Private.ScrappingUtils = scrappingUtils
 local const = Private.constants
 
 function scrappingUtils:Init()
+    -- Prefer using EasyScrap if it's loaded
+    if C_AddOns.IsAddOnLoaded("EasyScrap") then return end
+
     self.ui = Private.ScrappingUI
 
     local addon = Private.Addon

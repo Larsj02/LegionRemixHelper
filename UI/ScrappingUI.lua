@@ -44,6 +44,9 @@ function scrappingUI:AddTab(name)
 end
 
 function scrappingUI:Init()
+    -- Prefer using EasyScrap if it's loaded
+    if C_AddOns.IsAddOnLoaded("EasyScrap") then return end
+
     self.scrappingMachine = ScrappingMachineFrame
     self.L = Private.L
     local addon = Private.Addon
