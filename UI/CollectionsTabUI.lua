@@ -38,11 +38,18 @@ end
 function collectionsTabUI:SetupTab()
     local addon = Private.Addon
 
-    local collectionsTab = CreateFrame("Button", "CollectionsJournalTab7", CollectionsJournal, "CollectionsJournalTab")
+    local lastCollectionsTab = CollectionsJournal.numTabs or 0
+    local lastCollectionsTabName = CollectionsJournal:GetName() .. "Tab" .. lastCollectionsTab
+    local nextFreeCollectionsTabName = CollectionsJournal:GetName() .. "Tab" .. lastCollectionsTab + 1
+
+    local collectionsTab = CreateFrame("Button", nextFreeCollectionsTabName, CollectionsJournal, "CollectionsJournalTab")
     collectionsTab:SetID(const.COLLECTIONS_TAB.TAB_ID)
     collectionsTab:SetText(self.L["CollectionsTabUI.TabTitle"])
-    collectionsTab:SetPoint("LEFT", CollectionsJournal.WarbandScenesTab, "RIGHT", 5, 0)
+    collectionsTab:SetPoint("LEFT", lastCollectionsTabName, "RIGHT", 3, 0)
     PanelTemplates_TabResize(collectionsTab)
+
+    -- Increase the numTabs count so other addons receive correct value
+    CollectionsJournal.numTabs = lastCollectionsTab + 1
 
     function collectionsTab:GetTextYOffset(isSelected)
         return isSelected and -3 or 2
