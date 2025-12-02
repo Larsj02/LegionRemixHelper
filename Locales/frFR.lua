@@ -142,7 +142,7 @@ Exemple: /LRH s]],
     ["QuestUtils.SuppressShift"] = "Supprimer avec Maj",
     ["QuestUtils.SuppressShiftTooltip"] = "Maintenir la touche Maj pour supprimer l’acceptation / le rendu automatique de la quête.",
     ["QuestUtils.SuppressWorldTierIcon"] = "Masquer l'icône de niveau mondial",
-    ["QuestUtils.SuppressWorldTierIconTooltip"] = "Masquer l’icône de niveau mondial sur la minicarte.",
+    ["QuestUtils.SuppressWorldTierIconTooltip"] = "Masquer l’icône de niveau mondial sur la mini-carte.",
 
     -- Utils/QuickActionBarUtils.lua
     ["QuickActionBarUtils.SettingsCategoryPrefix"] = "Quick Action Bar",
