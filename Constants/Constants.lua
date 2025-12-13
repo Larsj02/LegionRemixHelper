@@ -4858,10 +4858,22 @@ do
         },
         {
             actionType = types.ITEM,
+            actionID = 248247,
+            checkVisibility = true,
+            title = "Cache of Infinite Power",  -- reward from Emissary quests
+        },
+        {
+            actionType = types.ITEM,
             actionID = 245553,
             checkVisibility = true,
             title = "Heroic Cache of Infinite Treasure",
             convert = true
+        },
+        {
+            actionType = types.ITEM,
+            actionID = 264675,
+            checkVisibility = true,
+            title = "Cache from the Infinite's Armory",
         },
         {
             actionType = types.ITEM,
@@ -4902,6 +4914,33 @@ do
             actionID = 249891,
             checkVisibility = true,
             title = "Mound of Artifactium Sand",
+        },
+        {
+            actionType = types.ITEM,
+            actionID = 246936,
+            checkVisibility = true,
+            title = "Resonant Epoch Memento",
+        },
+        {
+            actionType = types.ITEM,
+            actionID = 253227,
+            checkVisibility = true,
+            title = "Flawless Thread of Time",
+            minCount = 10,
+        },
+        {
+            actionType = types.ITEM,
+            actionID = 253224,
+            checkVisibility = true,
+            title = "Mote of a Broken Time",
+            minCount = 10,
+        },
+        {
+            actionType = types.ITEM,
+            actionID = 254267,
+            checkVisibility = true,
+            title = "Fragmented Memento of Epoch Challenges",
+            minCount = 100,
         },
         {
             actionType = types.ITEM,
@@ -4954,6 +4993,9 @@ do
             },
             {
                 ITEM_ID = 251821, -- Cache of Infinite Power
+            },
+            {
+                ITEM_ID = 248247, -- Cache of Infinite Power from Emissary quests
             },
             {
                 ITEM_ID = 245553, -- Heroic Cache of Infinite Treasure

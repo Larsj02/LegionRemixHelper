@@ -22,6 +22,7 @@ local qaConst = const.QUICK_ACTION_BAR
 ---@field actionID number|string|nil
 ---@field customCode string|nil
 ---@field checkVisibility (fun(self:QuickActionObject):shouldShow:boolean)?
+---@field minCount integer
 ---@field icon number|string|?
 ---@field title string
 ---@field id number
@@ -130,6 +131,16 @@ function quickActionMixin:SetTitle(title)
     self.title = title
 end
 
+---@return integer
+function quickActionMixin:GetMinCount()
+    return self.minCount
+end
+
+---@param count integer
+function quickActionMixin:SetMinCount(count)
+    self.minCount = count
+end
+
 ---@return fun(self:QuickActionObject):shouldShow:boolean
 function quickActionBarUtils:GetDefaultVisibilityFunc()
     return function(obj)
@@ -148,7 +159,7 @@ function quickActionBarUtils:GetDefaultVisibilityFunc()
                 local usable = C_ToyBox.IsToyUsable(itemID) or false
                 return usable and PlayerHasToy(itemID)
             end
-            return count > 0
+            return count >= obj:GetMinCount()
         end
 
         return true
@@ -162,6 +173,7 @@ end
 ---@field checkVisibility boolean|nil
 ---@field title string|nil
 ---@field customCode string|nil
+---@field minCount integer|nil
 
 ---@param dto QuickActionObjectDTO
 function quickActionBarUtils:CreateFromDTO(dto)
@@ -170,7 +182,8 @@ function quickActionBarUtils:CreateFromDTO(dto)
         dto.actionID,
         dto.icon,
         dto.checkVisibility and self:GetDefaultVisibilityFunc() or nil,
-        dto.title
+        dto.title,
+        dto.minCount
     )
     obj:SetCustomCode(dto.customCode)
 end
@@ -181,7 +194,32 @@ function quickActionBarUtils:Init()
     self.callbackUtils = Private.CallbackUtils
 
     local actions = addon:GetDatabaseValue("quickActionBar.actions", true)
-    if not actions then actions = self:GetDefaultOptions() end
+    if not actions then
+        actions = self:GetDefaultOptions()
+    else
+        -- Invalidates cache if options have changed
+        local actionsInOptions = self:GetDefaultOptions()
+
+        -- Invalidates cache immediately if size differs
+        if #actions ~= #actionsInOptions then
+            actions = actionsInOptions
+        else
+            -- Invalidates cache immediately if two arrays differ in any way
+            for i, action in ipairs(actionsInOptions) do
+                local cachedAction = actions[i]
+                if (cachedAction.actionType ~= action.actionType or
+                    cachedAction.actionID ~= action.actionID or
+                    cachedAction.checkVisibility ~= action.checkVisibility or
+                    cachedAction.title ~= action.title or
+                    cachedAction.convert ~= action.convert or
+                    cachedAction.minCount ~= action.minCount) then
+                    actions = actionsInOptions
+                    break
+                end
+            end
+        end
+    end
+
     ---@cast actions QuickActionObjectDTO[]
     for _, actionData in ipairs(actions) do
         self:CreateFromDTO(actionData)
@@ -193,6 +231,9 @@ function quickActionBarUtils:Init()
     addon:RegisterEvent("BAG_UPDATE_DELAYED", "QuickActionBarUtils_BagUpdateDelayed", function()
         self:TriggerVisibilityCallbacks()
     end)
+    -- addon:RegisterEvent("UNIT_INVENTORY_CHANGED", "QuickActionBarUtils_BagUpdateDelayed", function()
+    --     self:TriggerVisibilityCallbacks()
+    -- end)
     addon:RegisterEvent("SPELLS_CHANGED", "QuickActionBarUtils_SpellsChanged", function()
         self:TriggerVisibilityCallbacks()
     end)
@@ -212,6 +253,7 @@ function quickActionBarUtils:OnDisable()
             checkVisibility = action:GetVisibilityFunc() ~= nil,
             title = action:GetTitle(),
             customCode = action:GetCustomCode(),
+            minCount = action:GetMinCount(),
         })
     end
     Private.Addon:SetDatabaseValue("quickActionBar.actions", actionsToSave)
@@ -299,8 +341,11 @@ end
 ---@param iconOverride string|number|nil
 ---@param visibilityFunc (fun(self:QuickActionObject):shouldShow:boolean)?
 ---@param title string|nil
+---@param minCount integer|nil
 ---@return QuickActionObject
-function quickActionBarUtils:CreateAction(actionType, actionID, iconOverride, visibilityFunc, title)
+function quickActionBarUtils:CreateAction(
+    actionType, actionID, iconOverride, visibilityFunc, title, minCount
+)
     local obj = {}
     setmetatable(obj, { __index = quickActionMixin })
     ---@cast obj QuickActionObject
@@ -309,6 +354,7 @@ function quickActionBarUtils:CreateAction(actionType, actionID, iconOverride, vi
     obj:SetActionID(actionID)
     obj:SetIconOverride(iconOverride)
     obj:SetVisibilityFunc(visibilityFunc)
+    obj:SetMinCount(minCount or 1)
 
     local nextID = #self.actions + 1
     while self:GetActionByID(nextID) do
